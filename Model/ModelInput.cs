@@ -1,9 +1,9 @@
 public class ModelInput
 {
-  public string Text { get; set; }
+  public string? Text { get; set; }
 }
 
 public class ModelOutput
 {
-  public string Prediction { get; set; }
+  public string? Prediction { get; set; }
 }
