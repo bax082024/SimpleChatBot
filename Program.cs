@@ -54,6 +54,8 @@ namespace SimpleChatbot
                 // Predict the user's input
                 var prediction = predictionEngine.Predict(new ModelInput { Text = userInput });
 
+                
+
                 // Use PredictedLabel to respond to the user
                 switch (prediction.PredictedLabel)
                 {
