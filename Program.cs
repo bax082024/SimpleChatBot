@@ -74,19 +74,5 @@ namespace SimpleChatbot
         }
     }
 
-    // ModelInput class for the training data
-    public class ModelInput
-    {
-        [LoadColumn(0)] // First column of the file 
-        public string? Text { get; set; }
-
-        [LoadColumn(1)] // Second column (Label)
-        public string? Label { get; set; }
-    }
-
-    // ModelOutput class for predictions
-    public class ModelOutput
-    {
-        public string? PredictedLabel { get; set; }
-    }
+    
 }
