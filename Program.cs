@@ -15,12 +15,11 @@ namespace SimpleChatbot
       var trainingData = mlContext.Data.LoadFromTextFile<ModelInput>("Data/TrainingData.tsv", separatorChar: '\t', hasHeader: false);
 
       //Note to self, defines how we transform text into futures(FeaturizeText). SdcaMaximumEntropy is a multiclass classification algorithm
-      var pipeline = mlContext.Transforms.Text.FeaturizeText("Feature", nameof(ModelInput.Text))
-        .Append(mlContext.Transforms.Conversion.MapValueToKey("Label", nameof(ModelOutput.Prediction)))
-        .Append(mlContext.Transforms.Concatenate("Feature", "Features"))
-        .Append(mlContext.Transforms.Conversion.MapKeyToValue("Prediction", "Label"))
-        .Append(mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy("Label", "Features"))
-        .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel", "Label"));
+      var pipeline = mlContext.Transforms.Text.FeaturizeText("Features", nameof(ModelInput.Text))
+      .Append(mlContext.Transforms.Conversion.MapValueToKey("Label", nameof(ModelInput.Label)))
+      .Append(mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy("Label", "Features"))
+      .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel", "Label"));
+
 
       var model = pipeline.Fit(trainingData);
 

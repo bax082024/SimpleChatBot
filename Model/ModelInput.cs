@@ -6,10 +6,10 @@ public class ModelInput
   public string? Text { get; set; }
 
   [LoadColumn(1)] // second column
-  public string Label { get; set; }
+  public string? Label { get; set; }
 }
 
 public class ModelOutput
 {
-  public string? Prediction { get; set; }
+  public string? PredictedLabel { get; set; }
 }
